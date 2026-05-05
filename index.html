@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.N.A.X. | Control Center</title>
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+    <header class="admin-header">
+        <div class="logo-section">
+            <span class="pulse-icon"></span>
+            <h1>S.N.A.X. _ADMIN_PANEL_v2.0</h1>
+        </div>
+        <div class="stats-bar">
+            <span>PEDIDOS_ACTIVOS: <b id="active-count">0</b></span>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <div class="controls">
+            <button onclick="fetchOrders()" class="refresh-btn">
+                <span class="icon">🔄</span> ACTUALIZAR_BASE_DE_DATOS
+            </button>
+            <div id="loader" class="loader-hidden">SINCRONIZANDO...</div>
+        </div>
+        
+        <section id="orders-list" class="orders-grid">
+            <!-- Los pedidos se inyectan aquí -->
+            <p class="loading-msg">Iniciando protocolo de lectura...</p>
+        </section>
+    </main>
+
+    <script src="admin-logic.js"></script>
+</body>
+</html>

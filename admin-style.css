@@ -1,0 +1,258 @@
+/* 
+   S.N.A.X. NEURAL ADMIN INTERFACE v3.5
+   Integración de Colores Corporativos: Orange & Green Tech
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700&display=swap');
+
+:root {
+    --bg-deep: #0d0d0d;
+    --bg-card: #1a1a1a;
+    --snax-orange: #ff6600;
+    --snax-orange-dim: #cc5200;
+    --green-tech: #00ff41;
+    --text-primary: #ffffff;
+    --text-dim: #b3b3b3;
+    --border-color: #333333;
+}
+
+/* Scrollbar estilo Terminal S.N.A.X. */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--snax-orange); }
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', monospace;
+    margin: 0;
+    background-image: 
+        linear-gradient(rgba(255, 102, 0, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 102, 0, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    line-height: 1.6;
+}
+
+/* Header HUD S.N.A.X. */
+.admin-header {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 40px;
+    border-bottom: 2px solid var(--snax-orange);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(255, 102, 0, 0.2);
+}
+
+.logo-section h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    color: var(--snax-orange);
+    text-shadow: 0 0 10px rgba(255, 102, 0, 0.3);
+    margin: 0;
+}
+
+.pulse-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: var(--green-tech);
+    border-radius: 50%;
+    margin-right: 15px;
+    box-shadow: 0 0 10px var(--green-tech);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.6; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Contenedor Principal */
+.admin-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Botón de Refresco */
+.refresh-btn {
+    background: transparent;
+    color: var(--snax-orange);
+    border: 1px solid var(--snax-orange);
+    padding: 12px 25px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+}
+
+.refresh-btn:hover {
+    background: var(--snax-orange);
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.4);
+}
+
+/* Lista de Pedidos en Modo Lista */
+.orders-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    position: relative;
+    border-left: 5px solid var(--snax-orange); /* Color de acento de marca */
+}
+
+.order-card:hover {
+    border-color: var(--snax-orange);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.order-card.delivered {
+    border-left-color: #444;
+    opacity: 0.5;
+}
+
+/* Badge Trapezoide */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    background: var(--snax-orange);
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 10px;
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+}
+
+.order-info h3 {
+    margin: 5px 0;
+    color: var(--snax-orange);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+}
+
+/* Estilo de Lista de Productos[cite: 25] */
+.details-list {
+    list-style: none;
+    padding: 10px 15px;
+    margin: 15px 0;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid #222;
+    border-radius: 4px;
+}
+
+.details-list li {
+    padding: 6px 0;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    border-bottom: 1px dashed #222;
+    position: relative;
+    padding-left: 25px;
+}
+
+.details-list li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--green-tech); /* Verde tech para indicar ítem activo[cite: 24] */
+    font-weight: bold;
+}
+
+.details-list li:last-child { border-bottom: none; }
+
+.meta-data {
+    display: flex;
+    gap: 20px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+.price-tag {
+    color: var(--green-tech);
+    font-weight: bold;
+}
+
+/* Botón de Acción */
+.done-btn {
+    align-self: center;
+    background: transparent;
+    border: 1px solid var(--green-tech);
+    color: var(--green-tech);
+    padding: 12px 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.done-btn:hover {
+    background: var(--green-tech);
+    color: #000;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .order-card { grid-template-columns: 1fr; }
+    .done-btn { width: 100%; }
+    .admin-header { padding: 10px 20px; }
+}
+
+/* ESTILO PARA EL BOTÓN DE ACCIÓN (MARCAR ENTREGADO) */
+.action-btn {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid var(--snax-orange);
+    color: var(--snax-orange);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.action-btn:hover {
+    background: var(--snax-orange);
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
+}
+
+.action-btn:active {
+    transform: scale(0.98);
+}
+
+/* AJUSTE PARA EL NUEVO FOOTER DE FECHA Y TOTAL */
+.card-footer-new {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* OPCIONAL: Si quieres que el botón de entregado resalte más después de la fecha */
+.action-btn {
+    margin: 10px 15px 15px 15px; /* Añade margen interno para que no toque los bordes de la tarjeta */
+    width: calc(100% - 30px);
+}
